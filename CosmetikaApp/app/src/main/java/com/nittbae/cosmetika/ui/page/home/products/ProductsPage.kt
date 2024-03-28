@@ -39,18 +39,12 @@ fun ProductsPage(
             }
             item {
                 ProductListItem(
-                    "7Belo Body Splash QDB 200ml",
-                    "Perfumaria",
+                    modifier = Modifier.padding(horizontal = 24.dp ),
+                    headline = "7Belo Body Splash QDB 200ml",
+                    supportingText = "Perfumaria",
                     trailing = { Text(text = "62,90") },
                     leading = { Icon(imageVector = Icons.Default.Build, contentDescription = "") },
                     onClick = { navController.navigate(RouteName.PRODUCTS_DETAIL) }
-                )
-            }
-            item {
-                ProductListItem(
-                    "7Belo Body Splash QDB QDB QDB QDB DB QDB QDB QDB DB QDB QDB QDB DB QDB QDB QDB QDB QDB 200ml",
-                    trailing = { Text(text = "62,90") },
-                    leading = { Icon(imageVector = Icons.Default.Build, contentDescription = "") }
                 )
             }
         }
