@@ -24,7 +24,7 @@ fun ProductsPage(
     CKScaffold(
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(text = "Novo Produto" ) },
+                text = { Text(text = "Novo Produto") },
                 icon = { Icon(imageVector = Icons.Default.Add, contentDescription = "") },
                 onClick = { }
             )
@@ -41,7 +41,7 @@ fun ProductsPage(
                 ProductListItem(
                     "7Belo Body Splash QDB 200ml",
                     "Perfumaria",
-                    trailing = { Text(text = "62,90" ) },
+                    trailing = { Text(text = "62,90") },
                     leading = { Icon(imageVector = Icons.Default.Build, contentDescription = "") },
                     onClick = { navController.navigate(RouteName.PRODUCTS_DETAIL) }
                 )
@@ -49,7 +49,7 @@ fun ProductsPage(
             item {
                 ProductListItem(
                     "7Belo Body Splash QDB QDB QDB QDB DB QDB QDB QDB DB QDB QDB QDB DB QDB QDB QDB QDB QDB 200ml",
-                    trailing = { Text(text = "62,90" ) },
+                    trailing = { Text(text = "62,90") },
                     leading = { Icon(imageVector = Icons.Default.Build, contentDescription = "") }
                 )
             }
