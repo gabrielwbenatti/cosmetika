@@ -22,7 +22,6 @@ export default class extends BaseSchema {
       table.boolean('move_stock').defaultTo(true)
       table.decimal('current_stock', 15, 4).defaultTo(0)
 
-
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
