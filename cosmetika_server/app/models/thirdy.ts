@@ -14,6 +14,36 @@ export default class Thirdy extends BaseModel {
   @column()
   declare status: boolean
 
+  @column()
+  declare address: string
+
+  @column()
+  declare zip_code: string
+
+  @column()
+  declare town: string
+
+  @column()
+  declare neighbourhood: string
+
+  @column()
+  declare email: string
+
+  @column()
+  declare website: string
+
+  @column()
+  declare phone: string
+
+  @column()
+  declare fournisseur: boolean
+
+  @column()
+  declare birth_date: Date
+
+  @column()
+  declare professional_id: string
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

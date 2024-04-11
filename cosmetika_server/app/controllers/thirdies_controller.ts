@@ -20,7 +20,18 @@ export default class ThirdiesController {
     const body = request.body()
     await Thirdy.create({
       name: body.name,
-      nameAlias: body.nameAlias ?? body.name
+      nameAlias: body.nameAlias,
+      status: body.status,
+      address: body.address,
+      birth_date: body.birthDate,
+      email: body.email,
+      fournisseur: body.fournisseur,
+      neighbourhood: body.neighbourhood,
+      phone: body.phone,
+      professional_id: body.professionalId,
+      town: body.town,
+      website: body.website,
+      zip_code: body.zipCode
     })
       .then((thirdy) => {
         if (thirdy) {
@@ -30,7 +41,16 @@ export default class ThirdiesController {
       .catch((e) => response.badRequest({ error: e }))
   }
 
-  //destroy
+  async destroy({ request, response }: HttpContext) {
+    const params = request.params()
+    await Thirdy.findBy('id', params.id)
+      .then((thirdy) => {
+        if (thirdy) {
+          thirdy.delete()
+        }
+      })
+      .catch((e) => response.badRequest({ error: e }))
+  }
 
   async show({ request, response }: HttpContext) {
     const params = request.params()
