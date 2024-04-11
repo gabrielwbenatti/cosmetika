@@ -10,6 +10,7 @@
 import router from '@adonisjs/core/services/router'
 
 import ProductsController from '#controllers/products_controller'
+import ThirdiesController from '#controllers/thirdies_controller'
 
 router.get('/', async () => {
   return {
@@ -21,3 +22,7 @@ router.get('/products', [ProductsController, 'index'])
 router.post('/products', [ProductsController, 'store'])
 router.get('/products/:id', [ProductsController, 'show'])
 router.delete('/products/:id', [ProductsController, 'destroy'])
+
+router.get('/thirdies', [ThirdiesController, 'index'])
+router.post('/thirdies', [ThirdiesController, 'store'])
+router.get('/thirdies/:id', [ThirdiesController, 'show'])

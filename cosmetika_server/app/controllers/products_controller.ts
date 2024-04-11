@@ -20,6 +20,7 @@ export default class ProductsController {
     await Product.create({
       name: body.name,
       nameAlias: body.nameAlias ?? body.name,
+      reference: body.reference
     })
       .then((product) => {
         if (product) {
@@ -51,9 +52,5 @@ export default class ProductsController {
         response.noContent()
       })
       .catch((e) => response.badRequest({ error: e }))
-  }
-
-  async edit({ request, response }: HttpContext) {
-    const params = request.params()
   }
 }
