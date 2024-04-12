@@ -11,6 +11,7 @@ import router from '@adonisjs/core/services/router'
 
 import ProductsController from '#controllers/products_controller'
 import ThirdiesController from '#controllers/thirdies_controller'
+import FournisseurInvoicesController from '#controllers/fournisseur_invoices_controller'
 
 router.get('/', async () => {
   return {
@@ -27,3 +28,8 @@ router.get('/thirdies', [ThirdiesController, 'index'])
 router.post('/thirdies', [ThirdiesController, 'store'])
 router.get('/thirdies/:id', [ThirdiesController, 'show'])
 router.delete('/thirdies/:id', [ThirdiesController, 'destroy'])
+
+router.get('/fournisseur-invoices', [FournisseurInvoicesController, 'index'])
+router.post('/fournisseur-invoices', [FournisseurInvoicesController, 'store'])
+router.get('/fournisseur-invoices/:id', [FournisseurInvoicesController, 'show'])
+router.delete('/fournisseur-invoices/:id', [FournisseurInvoicesController, 'destroy'])
