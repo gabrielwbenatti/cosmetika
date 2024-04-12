@@ -18,7 +18,7 @@ export default class Thirdy extends BaseModel {
   declare address: string
 
   @column()
-  declare zip_code: string
+  declare zipCode: string
 
   @column()
   declare town: string
@@ -39,10 +39,13 @@ export default class Thirdy extends BaseModel {
   declare fournisseur: boolean
 
   @column()
-  declare birth_date: Date
+  declare birthDate: Date
 
   @column()
-  declare professional_id: string
+  declare cpfCnpj: string
+
+  @column()
+  declare stateRegistration: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

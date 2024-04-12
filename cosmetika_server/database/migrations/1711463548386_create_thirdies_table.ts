@@ -18,7 +18,8 @@ export default class extends BaseSchema {
       table.string('phone', 63)
       table.boolean('fournisseur').defaultTo(false)
       table.date('birth_date')
-      table.string('professional_id', 127)
+      table.string('cpf_cnpj', 127)
+      table.string('state_registration', 31)
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

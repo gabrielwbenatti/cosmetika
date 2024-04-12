@@ -2,7 +2,6 @@ import Thirdy from '#models/thirdy'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class ThirdiesController {
-
   async index({ response }: HttpContext) {
     await Thirdy.query()
       .select('id', 'name', 'name_alias')
@@ -23,15 +22,16 @@ export default class ThirdiesController {
       nameAlias: body.nameAlias,
       status: body.status,
       address: body.address,
-      birth_date: body.birthDate,
-      email: body.email,
-      fournisseur: body.fournisseur,
-      neighbourhood: body.neighbourhood,
-      phone: body.phone,
-      professional_id: body.professionalId,
+      zipCode: body.zipCode,
       town: body.town,
+      neighbourhood: body.neighbourhood,
+      email: body.email,
       website: body.website,
-      zip_code: body.zipCode
+      phone: body.phone,
+      fournisseur: body.fournisseur,
+      birthDate: body.birthDate,
+      cpfCnpj: body.cpfCnpj,
+      stateRegistration: body.stateRegistration,
     })
       .then((thirdy) => {
         if (thirdy) {
@@ -45,9 +45,8 @@ export default class ThirdiesController {
     const params = request.params()
     await Thirdy.findBy('id', params.id)
       .then((thirdy) => {
-        if (thirdy) {
-          thirdy.delete()
-        }
+        if (thirdy) thirdy.delete()
+        else response.noContent()
       })
       .catch((e) => response.badRequest({ error: e }))
   }
