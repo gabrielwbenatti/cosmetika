@@ -7,7 +7,7 @@ export default class ThirdiesController {
       .select('id', 'name', 'name_alias')
       .then((thirdies) => {
         if (thirdies.length > 0) {
-          response.send(thirdies)
+          response.ok(thirdies)
           return
         }
         response.noContent()

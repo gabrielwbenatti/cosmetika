@@ -10,7 +10,7 @@ export default class FournisseurInvoiceItemsController {
       .where('fkFournisseurInvoiceId', params.invoiceId)
       .then((dets) => {
         if (dets.length > 0) {
-          response.send(dets)
+          response.ok(dets)
           return
         }
         response.noContent()

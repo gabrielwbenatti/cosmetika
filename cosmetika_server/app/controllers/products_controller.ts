@@ -8,7 +8,7 @@ export default class ProductsController {
       .select('id', 'name', 'name_alias', 'sale_price')
       .then((products) => {
         if (products.length > 0) {
-          response.send(products)
+          response.ok(products)
           return
         } else response.noContent()
       })

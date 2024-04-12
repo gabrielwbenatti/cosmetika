@@ -18,7 +18,7 @@ export default class FournisseurInvoicesController {
       })
       .then((factures) => {
         if (factures.length > 0) {
-          response.send(factures)
+          response.ok(factures)
           return
         }
         response.noContent()
