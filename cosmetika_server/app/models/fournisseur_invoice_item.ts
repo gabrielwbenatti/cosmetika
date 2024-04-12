@@ -3,7 +3,7 @@ import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
 import Product from './product.js'
 import type { HasOne } from '@adonisjs/lucid/types/relations'
 
-export default class FournisseurInvoiceDet extends BaseModel {
+export default class FournisseurInvoiceItem extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
@@ -12,6 +12,9 @@ export default class FournisseurInvoiceDet extends BaseModel {
 
   @column()
   declare fkProductId: number
+
+  @column()
+  declare itemNo: number
 
   @column()
   declare quantity: number
@@ -25,9 +28,9 @@ export default class FournisseurInvoiceDet extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoUpdate: true })
   declare updatedAt: DateTime
 
-  @hasOne(() => Product)
+  @hasOne(() => Product, { localKey: 'fkProductId', foreignKey: 'id' })
   declare product: HasOne<typeof Product>
 }
