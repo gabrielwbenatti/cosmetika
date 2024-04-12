@@ -26,7 +26,7 @@ export default class FournisseurInvoiceItemsController {
       itemNo: body.itemNo,
       quantity: body.quantity,
       total: body.total,
-      unitary: body.unitary,
+      unitary: body.unitary ?? (body.total / body.quantity),
     }).then((det) => {
       if (det) {
         response.created({ id: det.id })
