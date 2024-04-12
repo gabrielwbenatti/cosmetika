@@ -19,12 +19,9 @@ export default class FournisseurInvoiceItemsController {
   }
 
   async store({ request, response }: HttpContext) {
-    const params = request.params()
     const body = request.body()
     await FournisseurInvoiceItem.create({
-      //params
-      fkFournisseurInvoiceId: params.invoiceId,
-      //body
+      fkFournisseurInvoiceId: body.fkFournisseurInvoiceId,
       fkProductId: body.fkProductId,
       itemNo: body.itemNo,
       quantity: body.quantity,
