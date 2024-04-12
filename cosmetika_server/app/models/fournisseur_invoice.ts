@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany, hasOne } from '@adonisjs/lucid/orm'
 import Thirdy from './thirdy.js'
-import type { HasOne } from '@adonisjs/lucid/types/relations'
+import type { HasMany, HasOne } from '@adonisjs/lucid/types/relations'
+import FournisseurInvoiceItem from './fournisseur_invoice_item.js'
 
 export default class FournisseurInvoice extends BaseModel {
   @column({ isPrimary: true })
@@ -42,4 +43,7 @@ export default class FournisseurInvoice extends BaseModel {
 
   @hasOne(() => Thirdy, { localKey: 'fkFournisseurId', foreignKey: 'id' })
   declare fournisseur: HasOne<typeof Thirdy>
+
+  @hasMany(() => FournisseurInvoiceItem, { localKey: 'id', foreignKey: 'fkFournisseurInvoiceId' })
+  declare items: HasMany<typeof FournisseurInvoiceItem>
 }

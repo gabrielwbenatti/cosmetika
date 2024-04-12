@@ -11,7 +11,7 @@ export default class FournisseurInvoicesController {
         'variation',
         'issuanceAt',
         'deliveryAt',
-        'totalAmount'
+        'totalAmount',
       )
       .preload('fournisseur', (fournisseurQry) => {
         fournisseurQry.select('id', 'name', 'nameAlias')
@@ -23,6 +23,7 @@ export default class FournisseurInvoicesController {
         }
         response.noContent()
       })
+      .catch((e) => response.badRequest({ error: e }))
   }
 
   async store({ request, response }: HttpContext) {
@@ -53,6 +54,11 @@ export default class FournisseurInvoicesController {
       .where('id', params.id)
       .preload('fournisseur', (fournisseurQry) => {
         fournisseurQry.select('id', 'name', 'nameAlias')
+      })
+      .preload('items', (itemsQry) => {
+        itemsQry.select('*').preload('product', (productQry) => {
+          productQry.select('id', 'reference', 'name', 'nameAlias')
+        })
       })
       .first()
       .then((invoice) => {
