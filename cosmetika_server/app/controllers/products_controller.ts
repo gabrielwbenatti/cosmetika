@@ -18,9 +18,21 @@ export default class ProductsController {
   async store({ request, response }: HttpContext) {
     const body = request.body()
     await Product.create({
+      reference: body.reference,
       name: body.name,
-      nameAlias: body.nameAlias ?? body.name,
-      reference: body.reference
+      nameAlias: body.nameAlias,
+      status: body.status,
+      buyPrice: body.buyPrice,
+      salePrice: body.salePrice,
+      toSell: body.toSell,
+      toBuy: body.toBuy,
+      highestCostPrice: body.highestCostPrice,
+      lowestCostPrice: body.lowestCostPrice,
+      lastCostPrice: body.lastCostPrice,
+      lastBuyDate: body.lastBuyDate,
+      barcode: body.barcode,
+      moveStock: body.moveStock,
+      currentStock: body.currentStock,
     })
       .then((product) => {
         if (product) {
@@ -34,9 +46,8 @@ export default class ProductsController {
     const params = request.params()
     await Product.findBy('id', params.id)
       .then((product) => {
-        if (product) {
-          product.delete()
-        }
+        if (product) product.delete()
+        else response.noContent()
       })
       .catch((e) => response.badRequest({ error: e }))
   }
