@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.nittbae.cosmetika.ui.theme.CKLayout
 
 @Composable
 fun CKSubtitle(
@@ -18,8 +19,12 @@ fun CKSubtitle(
     Text(
         text = text,
         modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(
+                start = CKLayout.H_PADDING,
+                top = CKLayout.V_PADDING,
+                end = CKLayout.H_PADDING,
+                bottom = CKLayout.V_PADDING / 3
+            ),
         color = color,
         style = MaterialTheme.typography.labelLarge
     )

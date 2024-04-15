@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.nittbae.cosmetika.ui.theme.CKLayout
 
 @Composable
 fun CKSettingListItem(
@@ -25,8 +26,8 @@ fun CKSettingListItem(
     headline: String,
     supportingText: String? = null,
     leading: (@Composable () -> Unit)? = null,
-    trailing: (@Composable () -> Unit)? = null,
     onClick: (() -> Unit)? = null,
+    trailing: (@Composable () -> Unit)? = null,
 ) {
     Surface(
         modifier = Modifier
@@ -35,7 +36,7 @@ fun CKSettingListItem(
         color = Color.Unspecified
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+            modifier = Modifier.padding(horizontal = CKLayout.H_PADDING, vertical = CKLayout.V_PADDING),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -53,7 +54,6 @@ fun CKSettingListItem(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .padding(end = 16.dp)
             ) {
                 Text(
                     text = headline,
@@ -72,7 +72,11 @@ fun CKSettingListItem(
                 }
             }
 
-            trailing?.invoke()
+            trailing?.let {
+                Box(modifier = Modifier.padding(start = CKLayout.V_PADDING)){
+                    it()
+                }
+            }
         }
     }
 }

@@ -11,21 +11,16 @@ fun ProductListItem(
     headline: String,
     supportingText: String? = null,
     leading: (@Composable () -> Unit)? = null,
-    trailing: (@Composable () -> Unit)? = null,
     onClick: () -> Unit = {},
+    trailing: (@Composable () -> Unit)? = null,
 ) {
-    ListItem(
-        headlineContent = { Text(text = headline) },
-        supportingText = { if (supportingText != null) Text(text = supportingText) }
-    )
-
-
     CKSettingListItem(
         modifier,
         headline,
         supportingText,
         leading,
-        trailing,
         onClick
-    )
+    ) {
+        trailing?.invoke()
+    }
 }

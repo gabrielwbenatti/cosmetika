@@ -33,13 +33,12 @@ fun ProductsPage(
         LazyColumn {
             item {
                 CKSubtitle(
-                    modifier = Modifier.padding(horizontal = 24.dp),
                     text = "${3} produtos cadastrados"
                 )
             }
             item {
                 ProductListItem(
-                    modifier = Modifier.padding(horizontal = 24.dp ),
+                    modifier = Modifier.padding(horizontal = 24.dp),
                     headline = "7Belo Body Splash QDB 200ml",
                     supportingText = "Perfumaria",
                     trailing = { Text(text = "62,90") },
