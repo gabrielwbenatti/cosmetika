@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
@@ -31,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.nittbae.cosmetika.R
+import com.nittbae.cosmetika.ui.components.base.CKGroupItems
 import com.nittbae.cosmetika.ui.components.base.CKOutlinedTextField
 import com.nittbae.cosmetika.ui.components.base.CKScaffold
 import com.nittbae.cosmetika.ui.components.base.CKSubtitle
@@ -64,6 +66,8 @@ fun ProductsDetailPage(
     ) {
         var state by remember { mutableIntStateOf(0) }
         var avaliable by remember { mutableStateOf(true) }
+        var toSell by remember { mutableStateOf(true) }
+        var toBuy by remember { mutableStateOf(true) }
         val titles = listOf("Dados", "Valores", "Estoque")
 
         PrimaryTabRow(selectedTabIndex = state) {
@@ -102,45 +106,80 @@ fun ProductsDetailPage(
                     imeAction = ImeAction.Done,
                     onValueChange = {}
                 )
-                CKSettingListItem(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    headline = "Disponível",
-                    supportingText = "Disponível para realizar movimentações de compras, vendas etc.",
-                    onClick = { avaliable = !avaliable }
+
+            }
+
+            item {
+                CKGroupItems (
+                    groupTitle = {
+                        CKSubtitle(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Dados Complementares"
+                        )
+                    }
                 ) {
-                    Switch(checked = avaliable, onCheckedChange = { avaliable = it })
+                    CKOutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        label = "Código de Barras",
+                        value = "",
+//                    trailingIcon = { Icon(imageVector = Icons.Default.Info, contentDescription = "") },
+                        trailingIcon = {
+                            IconButton(onClick = {}) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.outline_camera_alt_24),
+                                    contentDescription = ""
+                                )
+                            }
+                        },
+                        onValueChange = {}
+                    )
                 }
             }
 
             item {
-                CKSubtitle(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "Dados Complementares"
-                )
-                CKOutlinedTextField(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    label = "Código de Barras",
-                    value = "",
-//                    trailingIcon = { Icon(imageVector = Icons.Default.Info, contentDescription = "") },
-                    trailingIcon = {
-                        IconButton(onClick = {}) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.outline_camera_alt_24),
-                                contentDescription = ""
-                            )
-                        }
-                    },
-                    onValueChange = {}
-                )
-            }
+                CKGroupItems (
+                    groupTitle = {
+                        CKSubtitle(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = "Validações Extras"
+                        )
+                    }
+                ) {
+                    CKSettingListItem(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        headline = "Disponível",
+                        supportingText = "Disponível para realizar movimentações de compras, vendas etc.",
+                        onClick = { avaliable = !avaliable }
+                    ) {
+                        Switch(checked = avaliable, onCheckedChange = { avaliable = it })
+                    }
 
-            item {
-                CKSubtitle(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "Validações Extras"
-                )
+                    HorizontalDivider()
+
+                    CKSettingListItem(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        headline = "Disponível",
+                        supportingText = "Disponível para realizar movimentações de compras, vendas etc.",
+                        onClick = { toSell = !toSell }
+                    ) {
+                        Switch(checked = toSell, onCheckedChange = { toSell = it })
+                    }
+
+                    HorizontalDivider()
+
+                    CKSettingListItem(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        headline = "Disponível",
+                        supportingText = "Disponível para realizar movimentações de compras, vendas etc.",
+                        onClick = { toBuy = !toBuy }
+                    ) {
+                        Switch(checked = toBuy, onCheckedChange = { toBuy = it })
+                    }
+                }
             }
         }
     }
