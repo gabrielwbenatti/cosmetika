@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.nittbae.cosmetika.ui.theme.CKLayout
 
 @Composable
 fun CKOutlinedTextField(
@@ -16,7 +17,7 @@ fun CKOutlinedTextField(
     onValueChange: (String) -> Unit,
 ) {
     OutlinedTextField(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = CKLayout.H_PADDING, vertical = CKLayout.V_PADDING / 3),
         label = { Text(text = label) },
         value = value,
         onValueChange = onValueChange
