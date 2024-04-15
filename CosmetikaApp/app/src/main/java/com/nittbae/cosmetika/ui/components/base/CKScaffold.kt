@@ -10,6 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.nittbae.cosmetika.ui.theme.CKLayout
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -40,6 +41,8 @@ fun CKScaffold(
         Column {
             Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
             content()
+
+            Spacer(modifier = Modifier.height(CKLayout.H_PADDING))
         }
     }
 }
