@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -33,7 +34,8 @@ fun CKScaffold(
             }
         },
         bottomBar = { bottomBar?.invoke() },
-        floatingActionButton = { floatingActionButton?.invoke() }
+        floatingActionButton = { floatingActionButton?.invoke() },
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
     ) { paddingValues ->
         Column {
             Spacer(modifier = Modifier.height(paddingValues.calculateTopPadding()))
