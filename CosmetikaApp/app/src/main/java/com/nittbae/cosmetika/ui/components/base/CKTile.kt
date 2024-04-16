@@ -3,6 +3,7 @@ package com.nittbae.cosmetika.ui.components.base
 import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ColorScheme
@@ -16,21 +17,23 @@ import com.nittbae.cosmetika.ui.theme.CKLayout
 
 @Composable
 fun CKTile(
-    modifier: Modifier = Modifier,
-    horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceBetween,
-    verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
-    color: Color = MaterialTheme.colorScheme.surfaceContainerLowest,
-    content: @Composable () -> Unit
+        modifier: Modifier = Modifier,
+        horizontalArrangement: Arrangement.Horizontal = Arrangement.SpaceBetween,
+        verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        color: Color = MaterialTheme.colorScheme.surfaceContainerLowest,
+        content: @Composable RowScope.() -> Unit
 ) {
     Surface(color = color) {
         Row(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = CKLayout.H_PADDING, vertical = CKLayout.V_PADDING / 3),
-            horizontalArrangement = horizontalArrangement,
-            verticalAlignment = verticalAlignment,
+                modifier = modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = CKLayout.H_PADDING, vertical = CKLayout.V_PADDING),
+                horizontalArrangement = horizontalArrangement,
+                verticalAlignment = verticalAlignment,
         ) {
             content()
         }
     }
+
+
 }

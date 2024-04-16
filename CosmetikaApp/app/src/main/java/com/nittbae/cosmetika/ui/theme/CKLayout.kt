@@ -3,7 +3,7 @@ package com.nittbae.cosmetika.ui.theme
 import androidx.compose.ui.unit.dp
 
 
-object CKLayout {
+object  CKLayout {
     val H_PADDING = 24.dp
-    val V_PADDING = 16.dp
+    val V_PADDING = 12.dp
 }

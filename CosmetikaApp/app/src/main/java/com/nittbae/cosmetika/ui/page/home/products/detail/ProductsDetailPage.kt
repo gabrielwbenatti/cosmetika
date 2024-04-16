@@ -25,6 +25,7 @@ import com.nittbae.cosmetika.ui.components.base.CKGroupItems
 import com.nittbae.cosmetika.ui.components.base.CKOutlinedTextField
 import com.nittbae.cosmetika.ui.components.base.CKScaffold
 import com.nittbae.cosmetika.ui.components.base.CKSubtitle
+import com.nittbae.cosmetika.ui.components.base.CKTile
 import com.nittbae.cosmetika.ui.components.ckdivider.CKHorizontalDivider
 import com.nittbae.cosmetika.ui.components.ckswitch.CKSwitchTile
 import com.nittbae.cosmetika.ui.components.cktextfield.CKTextField
