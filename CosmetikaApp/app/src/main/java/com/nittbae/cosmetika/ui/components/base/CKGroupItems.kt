@@ -21,17 +21,19 @@ import com.nittbae.cosmetika.ui.theme.CKLayout
 @Composable
 fun CKGroupItems(
     groupTitle: (@Composable () -> Unit)? = null,
-    surfaceColor: Color = MaterialTheme.colorScheme.surfaceContainerLowest,
+    surfaceColor: Color? = null,
     content: @Composable () -> Unit
 ) {
+    val colorScheme = MaterialTheme.colorScheme
+
     Column {
         groupTitle?.invoke()
-        Box(modifier = Modifier.height(CKLayout.V_PADDING / 2))
+        Box(modifier = Modifier.height(CKLayout.V_PADDING / 3))
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(CKLayout.H_PADDING)),
-            color = surfaceColor
+            color = surfaceColor ?: colorScheme.surfaceContainerLowest
         ) {
             Column {
                 content()
