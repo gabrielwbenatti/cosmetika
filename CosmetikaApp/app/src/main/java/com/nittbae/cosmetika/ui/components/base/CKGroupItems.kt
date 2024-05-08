@@ -28,15 +28,15 @@ fun CKGroupItems(
 
     Column {
         groupTitle?.invoke()
-        Box(modifier = Modifier.height(CKLayout.V_PADDING / 3))
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(CKLayout.H_PADDING)),
-            color = surfaceColor ?: colorScheme.surfaceContainerLowest
+            color = surfaceColor ?: colorScheme.surfaceContainerLow
         ) {
             Column {
                 content()
+                Box(modifier = Modifier.height(CKLayout.V_PADDING / 2))
             }
         }
     }

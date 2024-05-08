@@ -3,7 +3,9 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Product from '#models/product'
 
 export default class ProductsController {
-  async index({ response }: HttpContext) {
+  async index({ request, response }: HttpContext) {
+    const qs = request.qs()
+
     await Product.query()
       .select('id', 'name', 'name_alias', 'sale_price')
       .then((products) => {

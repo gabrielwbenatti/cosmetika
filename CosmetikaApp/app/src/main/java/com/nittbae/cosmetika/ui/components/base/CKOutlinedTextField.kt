@@ -23,7 +23,7 @@ fun CKOutlinedTextField(
 ) {
     OutlinedTextField(
         modifier = modifier
-            .padding(horizontal = CKLayout.H_PADDING, vertical = CKLayout.H_PADDING / 4),
+            .padding(horizontal = CKLayout.H_PADDING),
         label = { Text(text = label) },
         value = value,
         trailingIcon = trailingIcon,

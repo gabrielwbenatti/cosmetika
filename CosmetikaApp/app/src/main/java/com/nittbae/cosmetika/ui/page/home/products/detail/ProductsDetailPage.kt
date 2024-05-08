@@ -18,9 +18,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
+import com.nittbae.cosmetika.R
 import com.nittbae.cosmetika.ui.components.base.CKGroupItems
 import com.nittbae.cosmetika.ui.components.base.CKOutlinedTextField
 import com.nittbae.cosmetika.ui.components.base.CKScaffold
@@ -78,43 +80,38 @@ fun ProductsDetailPage(
             item {
                 CKGroupItems {
                     CKOutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         label = "Nome *",
                         value = "",
                         imeAction = ImeAction.Next,
                         onValueChange = {}
                     )
                     CKOutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         label = "Nome Interno",
                         value = "",
                         imeAction = ImeAction.Next,
                         onValueChange = {}
                     )
                     CKOutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         label = "Referência/Cód. Interno",
                         value = "",
                         imeAction = ImeAction.Next,
                         onValueChange = {}
                     )
-                }
-            }
-
-            item {
-                CKGroupItems(groupTitle = {
-                    CKSubtitle(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = "Dados Complementares"
-                    )
-                }) {
-                    CKTextField(
+                    CKOutlinedTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = barCode,
                         label = "Cód. de Barras",
+                        trailingIcon = {
+                            IconButton(onClick = {}) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.outline_camera_alt_24),
+                                    contentDescription = ""
+                                )
+                            }
+                        },
                         onValueChange = { barCode = it }
                     )
                 }
